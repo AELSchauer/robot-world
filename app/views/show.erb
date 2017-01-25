@@ -1,45 +1,34 @@
-<style>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css" type="text/css">
+		<!-- <link href="<%= url('stylesheet.css') %>" rel="stylesheet" type="text/css" /> -->
+	</head>
+	<body>
+		<h2><%= @robot.name %></h2>
 
-	table {
-	    border-collapse: collapse;
-	    margin-top: 20px;
-	    margin-bottom: 20px;
-	}
+		<table class="display-table">
+		  <tr>
+		    <th>City</th>
+		  	<td><%= @robot.city %></td>
+		  </tr>
+		  <tr>
+		    <th>State</th>
+		  	<td><%= @robot.state %></td>
+		  </tr>
+		  <tr>
+		    <th>Department</th>
+		  	<td><%= @robot.department %></td>
+		  </tr>
+		</table>
 
-	th {
-		background-color: #999;
-	}
+		<!-- <a href="/robots/:id/edit">
+			<button>Create New Robot</button>
+		</a>
+		<a href="/robots/:id/delete">
+			<button>Create New Robot</button>
+		</a> -->
 
-	td, th {
-	    border: 1px solid black;
-	    text-align: center;
-	    padding: 10px;
-	}
-
-</style>
-
-<h1><%= @robot.name %></h1>
-
-<table>
-  <tr>
-    <th>City</th>
-  	<td><%= @robot.city %></td>
-  </tr>
-  <tr>
-    <th>State</th>
-  	<td><%= @robot.state %></td>
-  </tr>
-  <tr>
-    <th>Department</th>
-  	<td><%= @robot.department %></td>
-  </tr>
-</table>
-
-<!-- <a href="/robots/:id/edit">
-	<button>Create New Robot</button>
-</a>
-<a href="/robots/:id/delete">
-	<button>Create New Robot</button>
-</a> -->
-
-<a href="/robots">Return to Robot List</a>
+		<a href="/robots"><button>Return to Robot List</button></a>
+	</body>
+</html>

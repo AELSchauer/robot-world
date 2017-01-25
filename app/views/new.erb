@@ -1,19 +1,53 @@
-<form action="/robots" method="post">
-	<label>Name:</label>
-	<input type="text" name="robots[name]">
-	<br>
-	<label>City:</label>
-	<input type="text" name="robots[city]">
-	<br>
-	<label>State:</label>
-	<select name="robots[state]">
-		<% @states.each do |state| %>
-		  <option value=<%= state %> ><%= state %></option>
-		<% end %>
-	</select>
-	<br>
-	<label>Department:</label>
-	<input type="text" name="robots[department]">
-	<br><br>
-	<input type="submit" name="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheet.css" type="text/css">
+  </head>
+  <body>
+    <h2>Create New Robot</h2>
+    <form action="/robots" method="post">
+      <table>
+        <tr>
+          <td>
+            <label>Name:</label>
+          </td>
+          <td>
+            <input type="text" name="robots[name]">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>City:</label>
+          </td>
+          <td>
+            <input type="text" name="robots[city]">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>State:</label>
+          </td>
+          <td>
+            <select name="robots[state]">
+              <% @states.each do |state| %>
+              <option value=<%= state %> ><%= state %></option>
+            <% end %>
+          </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Department:</label>
+          </td>
+          <td>
+            <input type="text" name="robots[department]">
+          </td>
+        </tr>
+      </table>
+      <input type="submit" name="Submit">
+      <a href="/robots/">
+        <button>Cancel</button>
+      </a>
+    </form>
+  </body>
+</html>
