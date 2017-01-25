@@ -4,7 +4,8 @@ class Robot
               :name,
               :city,
               :state,
-              :department
+              :department,
+              :picture
 
   def initialize(robot_params)
     @database   = Robot.database
@@ -13,6 +14,7 @@ class Robot
     @city       = robot_params["city"]
     @state      = robot_params["state"]
     @department = robot_params["department"]
+    @picture    = robot_params["picture"]
   end
 
   def self.database
@@ -31,8 +33,8 @@ class Robot
 
   def save
     @database.execute(
-      "INSERT INTO robots (name, city, state, department) VALUES (?, ?, ?, ?);",
-      @name, @city, @state, @department
+      "INSERT INTO robots (name, city, state, department, picture) VALUES (?, ?, ?, ?, ?);",
+      @name, @city, @state, @department, @picture
     )
   end
 
@@ -43,14 +45,21 @@ class Robot
 
   def self.update(id, robot_params)
     database.execute(
-      "UPDATE robots SET name = ?, city = ?, state = ?, department = ? WHERE id = ?;",
-      robot_params[:name], robot_params[:city], robot_params[:state], robot_params[:department], id
+      "UPDATE robots SET name = ?, city = ?, state = ?, department = ?, picture = ? WHERE id = ?;",
+      robot_params[:name], robot_params[:city], robot_params[:state], robot_params[:department], robot_params[:picture], id
     )
     Robot.find(id)
   end
 
   def self.destroy(id)
     database.execute("DELETE FROM robots WHERE id = ?;", id)
+  end
+
+  def self.metrics
+    state_list = database.execute("SELECT state FROM robots").map { |list| list[0] }
+    city_list = database.execute("SELECT city FROM robots").map { |list| list[0] }
+    department_list = database.execute("SELECT department FROM robots").map { |list| list[0] }
+    [state_list, city_list, department_list]
   end
 
 end

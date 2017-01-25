@@ -22,7 +22,7 @@
 
 			<% @robots.each do |robot| %>
 			  <tr>
-			    <td><%= robot.name %></td>
+			    <td><img src="<%= robot.picture %>" class="thumbnail"> <%= robot.name %></td>
 			    <td><%= robot.city %></td>
 			    <td><%= robot.state %></td>
 			    <td><%= robot.department %></td>

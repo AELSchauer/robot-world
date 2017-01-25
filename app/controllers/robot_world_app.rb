@@ -9,12 +9,18 @@ class RobotWorldApp < Sinatra::Base
     erb :index
   end
 
+  get '/robots/dashboard' do
+    @states = states
+    @state_list, @city_list, @department_list = Robot.metrics
+    erb :dashboard
+  end
+
   get '/' do
     redirect '/robots'
   end
 
   get '/robots/new' do
-    @states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+    @states = states
     erb :new
   end
 
@@ -30,7 +36,7 @@ class RobotWorldApp < Sinatra::Base
   end
 
   get '/robots/:id/edit' do
-    @states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+    @states = states
     @robot = Robot.find(params[:id])
     erb :edit
   end
@@ -43,6 +49,10 @@ class RobotWorldApp < Sinatra::Base
   delete '/robots/:id' do |id|
     Robot.destroy(id.to_i)
     redirect '/robots'
+  end
+
+  def states
+    ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
   end
 
 end

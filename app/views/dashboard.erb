@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css" type="text/css">
+	</head>
+
+	<body>
+
+		<h1>Robot Metrics</h1>
+
+		<h2>Cities</h2>
+		<table class="display-table">
+			<% @city_list.uniq.each do |city| %>
+				<tr>
+					<th><%= city %></th>
+					<td><%= @city_list.count(city) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<h2>States</h2>
+		<table class="display-table">
+			<% @states.each do |state| %>
+				<tr>
+					<th><%= state %></th>
+					<td><%= @state_list.count(state) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<h2>Departments</h2>
+		<table class="display-table">
+			<% @department_list.uniq.each do |department| %>
+				<tr>
+					<th><%= department %></th>
+					<td><%= @department_list.count(department) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+	</body>
+
+</html>
