@@ -7,18 +7,19 @@
 
   <body>
 
-    <h2>Create Robot</h2>
+    <h2>Edit Robot</h2>
 
     <table>
 
-      <form action="/robots" method="post">
+      <form action="/robots/<%= @robot.id %>" method="post">
+        <input type="hidden" name="_method" value="PUT" />
 
         <tr>
           <td>
             <label>Name:</label>
           </td>
           <td>
-            <input type="text" name="robots[name]">
+            <input type='text' name='robot[name]' value="<%= @robot.name %>"/>
           </td>
         </tr>
 
@@ -27,7 +28,7 @@
             <label>City:</label>
           </td>
           <td>
-            <input type="text" name="robots[city]">
+            <input type='text' name='robot[city]' value="<%= @robot.city %>"/>
           </td>
         </tr>
 
@@ -36,9 +37,13 @@
             <label>State:</label>
           </td>
           <td>
-            <select name="robots[state]">
+            <select name="robot[state]" >
               <% @states.each do |state| %>
-                <option value=<%= state %> ><%= state %></option>
+                <% if state == @robot.state %>
+                  <option value="<%= state %>" selected><%= state %></option>
+                <% else %>
+                  <option value="<%= state %>" ><%= state %></option>
+                <% end %>
               <% end %>
             </select>
           </td>
@@ -49,7 +54,7 @@
             <label>Department:</label>
           </td>
           <td>
-            <input type="text" name="robots[department]">
+            <input type='text' name='robot[department]' value="<%= @robot.department %>"/>
           </td>
         </tr>
 
@@ -59,13 +64,13 @@
             </form>
           </td>
           <td>
-            <a href="/robots">
+            <a href="/robots" >
               <button>Cancel</button>
             </a>
           </td>
         </tr>
 
-      </table>
+    </table>
 
   </body>
 

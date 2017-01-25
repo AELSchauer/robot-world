@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<link rel="stylesheet" href="/stylesheet.css" type="text/css">
 	</head>
+
 	<body>
+
 		<h1>My Robots</h1>
 
-		<a href="/robots/new">
-			<button>Create New Robot</button>
-		</a>
+		<a href="/robots/new"><button>Create New Robot</button></a>
 
 		<table class="display-table">
 		  <tr>
@@ -18,6 +19,7 @@
 		    <th>Department</th>
 		    <th>Actions</th>
 		  </tr>
+
 			<% @robots.each do |robot| %>
 			  <tr>
 			    <td><%= robot.name %></td>
@@ -25,17 +27,18 @@
 			    <td><%= robot.state %></td>
 			    <td><%= robot.department %></td>
 			    <td>
-			    	<!-- links & forms go here -->
 			    	<a href="/robots/<%= robot.id %>"><button>Details</button></a>
 			    	<a href="/robots/<%= robot.id %>/edit"><button>Edit</button></a>
-					<form action="/robots/<%= robot.id %>/delete" method="post" class="delete-button">
+					<form action="/robots/<%= robot.id %>" method="post">
 						<input type="hidden" name="_method" value="DELETE">
-						<input type="submit" name="Details" value="Delete" class="button" style="font-face:garamond;">
+						<input type="submit" name="Details" value="Delete" class="button">
 					</form>
 			    </td>
 			  </tr>
 			<% end %>
-		</table>
-	</body>
-</html>
 
+		</table>
+
+	</body>
+
+</html>

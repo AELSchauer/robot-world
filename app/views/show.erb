@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<link rel="stylesheet" href="/stylesheet.css" type="text/css">
-		<!-- <link href="<%= url('stylesheet.css') %>" rel="stylesheet" type="text/css" /> -->
 	</head>
+
 	<body>
 		<h2><%= @robot.name %></h2>
 
@@ -22,13 +23,13 @@
 		  </tr>
 		</table>
 
-		<!-- <a href="/robots/:id/edit">
-			<button>Create New Robot</button>
-		</a>
-		<a href="/robots/:id/delete">
-			<button>Create New Robot</button>
-		</a> -->
-
+		<a href="/robots/<%= @robot.id %>/edit"><button>Edit</button></a>
+		<form action="/robots/<%= @robot.id %>" method="post">
+			<input type="hidden" name="_method" value="DELETE">
+			<input type="submit" name="Details" value="Delete" class="button">
+		</form>
 		<a href="/robots"><button>Return to Robot List</button></a>
+
 	</body>
+
 </html>
