@@ -1,0 +1,11 @@
+<form action="/robots" method="post">
+	<input type="text" name="robots[name]">
+	<input type="text" name="robots[city]">
+  <select name="robots[state]">
+		<% @states.each do |state| %>
+		  <option value=<%= state %> ><%= state %></option>
+		<% end %>
+	</select>
+	<input type="text" name="robots[department]">
+	<input type="submit" name="Submit">
+</form>
